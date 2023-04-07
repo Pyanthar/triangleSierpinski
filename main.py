@@ -1,5 +1,4 @@
 import math
-
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import random
@@ -13,10 +12,6 @@ scatter = ax.scatter([], [], s=1)
 ax.set_title("Triangleception")
 ax.set_xlabel("Axe X")
 ax.set_ylabel("Axe Y")
-
-
-
-
 
 nbpoints = 100000
 points = []
@@ -37,21 +32,20 @@ ax.set_ylim(-Tailletriangle/10, Tailletriangle-Tailletriangle/10)
 # Fonction pour mettre à jour les points à chaque image de l'animation
 def update(frame):
     if frame < len(futurpoints):
-        #print(frame)
-        #print(points)
         points.append(futurpoints[frame])
         scatter.set_offsets(points)
-        print(frame)
+        #print(frame)
     else:
         points.clear()
     return scatter,
 
-def start_anim():
-    # Création de l'animation avec une image toutes les 500 millisecondes
-    ani = FuncAnimation(fig, update, frames=len(futurpoints) + 1, interval=1, blit=True)
 
+def start_anim():
+    # Création de l'animation avec une image toutes les 1 millisecondes
+    ani = FuncAnimation(fig, update, frames=len(futurpoints) + 1, interval=1, blit=True)
     # Affichage de l'animation
     plt.show()
+
 
 def center(point1, point2):
 
@@ -65,6 +59,7 @@ def center(point1, point2):
 #calcul du premier point
 futurpoints.append(center(pointA, pointB))
 
+#Calcul des autres points
 for i in range(nbpoints):
     choix = random.randint(1, 3)
     if choix == 1:
@@ -77,7 +72,7 @@ for i in range(nbpoints):
     nouveaupoint = center(futurpoints[i], pointrandom)
     futurpoints.append(nouveaupoint)
     #print(nouveaupoint)
-    print(i)
+    #print(i)
 # animation
 start_anim()
 
