@@ -41,14 +41,13 @@ def update(frame):
 
 
 def start_anim():
-    # Création de l'animation avec une image toutes les 1 millisecondes
+    # Création de l'animation avec une frame toutes les 1 millisecondes
     ani = FuncAnimation(fig, update, frames=len(futurpoints) + 1, interval=1, blit=True)
     # Affichage de l'animation
     plt.show()
 
 
 def center(point1, point2):
-
     x1, y1 = point1
     x2, y2 = point2
     x_center = (x1 + x2) / 2
